@@ -14,12 +14,33 @@ import { siteContent } from "./data/siteContent";
 const LANG_STORAGE_KEY = "souq-lang";
 const FOUNDER_PATH = "/founder";
 const PRODUCT_DETAILS_PATH = "/product-details";
+const BASE_PATH = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+
+function getAppPathname(pathname) {
+  if (!BASE_PATH) {
+    return pathname || "/";
+  }
+
+  if (pathname === BASE_PATH) {
+    return "/";
+  }
+
+  if (pathname.startsWith(`${BASE_PATH}/`)) {
+    return pathname.slice(BASE_PATH.length) || "/";
+  }
+
+  return pathname || "/";
+}
+
+function buildBrowserPath(path) {
+  return `${BASE_PATH}${path === "/" ? "" : path}` || "/";
+}
 
 function App() {
   const [language, setLanguage] = useState(() => localStorage.getItem(LANG_STORAGE_KEY) || "ar");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [pathname, setPathname] = useState(() => window.location.pathname);
+  const [pathname, setPathname] = useState(() => getAppPathname(window.location.pathname));
 
   const content = useMemo(() => siteContent[language], [language]);
   const isFounderPage = pathname === FOUNDER_PATH;
@@ -39,7 +60,7 @@ function App() {
 
   useEffect(() => {
     function handlePopState() {
-      setPathname(window.location.pathname);
+      setPathname(getAppPathname(window.location.pathname));
       setIsMenuOpen(false);
     }
 
@@ -51,8 +72,10 @@ function App() {
   }, []);
 
   function navigateTo(path) {
-    if (window.location.pathname !== path) {
-      window.history.pushState({}, "", path);
+    const nextPath = buildBrowserPath(path);
+
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, "", nextPath);
       setPathname(path);
     }
 
