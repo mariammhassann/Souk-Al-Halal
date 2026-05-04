@@ -93,6 +93,9 @@ export default function HeroSection({ content }) {
                   src={slide.image}
                   alt={content.visualAlt}
                   loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "low"}
+                  decoding="async"
+                  draggable={false}
                 />
                 <div className="hero-visual-overlay" />
               </div>
@@ -121,7 +124,14 @@ export default function HeroSection({ content }) {
           <div className="hero-showcase-inner">
             <div className="hero-showcase-footer">
               <div className="visual-thumb">
-                <img src={imageAssets.hero.thumb} alt={content.visualTitle} />
+                <img
+                  src={imageAssets.hero.thumb}
+                  alt={content.visualTitle}
+                  loading="lazy"
+                  fetchPriority="low"
+                  decoding="async"
+                  draggable={false}
+                />
               </div>
 
               <div className="hero-showcase-meta">

@@ -1,0 +1,402 @@
+/* ══════════════════════════════════════════════════════
+   ContactSection — enhanced styles
+   Fonts: Cormorant Garamond + DM Sans (loaded globally)
+   ══════════════════════════════════════════════════════ */
+
+/* ── Section ───────────────────────────────────────── */
+.ct-section {
+  position: relative;
+  padding: 6.5rem 0 7rem;
+  font-family: "DM Sans", sans-serif;
+  overflow: hidden;
+}
+
+/* ── Ambient background ────────────────────────────── */
+.ct-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.ct-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.ct-blob--1 {
+  width: 480px; height: 480px;
+  top: -80px; right: -60px;
+  background: radial-gradient(circle, rgba(239,215,138,0.28) 0%, transparent 70%);
+  animation: ctBlobFloat 14s ease-in-out infinite alternate;
+}
+.ct-blob--2 {
+  width: 360px; height: 360px;
+  bottom: -60px; left: -60px;
+  background: radial-gradient(circle, rgba(32,77,57,0.14) 0%, transparent 70%);
+  animation: ctBlobFloat 18s ease-in-out infinite alternate-reverse;
+}
+@keyframes ctBlobFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(18px, 14px) scale(1.07); }
+}
+.ct-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5; mix-blend-mode: multiply;
+}
+
+/* ── Layout ────────────────────────────────────────── */
+.ct-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 4.5rem;
+  align-items: start;
+}
+
+/* ── Left info column ──────────────────────────────── */
+.ct-info {
+  display: grid;
+  gap: 1.75rem;
+  align-content: start;
+  position: sticky;
+  top: 7rem;
+}
+
+/* Eyebrow */
+.ct-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.ct-eyebrow-gem {
+  display: block;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(200,155,60,0.5);
+  flex-shrink: 0;
+}
+
+/* Title */
+.ct-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+/* Copy */
+.ct-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 44ch;
+  overflow-wrap: anywhere;
+}
+
+/* Action buttons */
+.ct-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.ct-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem 0.55rem 0.75rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(32,77,57,0.15);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  color: var(--green-deep);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 10px rgba(24,45,34,0.06);
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.2s ease,
+    box-shadow 0.22s ease;
+}
+.ct-action-btn:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff8ee;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(32,77,57,0.22);
+}
+.ct-action-btn:hover .ct-action-icon { color: rgba(255,248,238,0.85); }
+.ct-action-icon {
+  display: flex;
+  align-items: center;
+  color: var(--gold);
+  transition: color 0.22s ease;
+}
+.ct-action-icon svg { width: 1rem; height: 1rem; }
+.ct-action-label { line-height: 1; }
+
+/* ══════════════════════════════════════════════════════
+   FORM
+   ══════════════════════════════════════════════════════ */
+.ct-form-wrap {
+  min-width: 0;
+}
+
+.ct-form {
+  position: relative;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 28px;
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.8) inset,
+    0 24px 60px rgba(24,45,34,0.1),
+    0 4px 12px rgba(24,45,34,0.06);
+  overflow: hidden;
+}
+
+.ct-form-inner {
+  padding: 2.2rem;
+  display: grid;
+  gap: 1rem;
+  transition: opacity 0.3s ease;
+}
+.ct-form--submitted .ct-form-inner { opacity: 0; pointer-events: none; }
+
+/* ── Floating-label fields ─────────────────────────── */
+.ct-field {
+  position: relative;
+}
+
+.ct-field input,
+.ct-field textarea {
+  width: 100%;
+  padding: 1.45rem 1rem 0.55rem;
+  border: 0;
+  border-radius: 14px;
+  background: rgba(32,77,57,0.04);
+  color: var(--green-deep);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  resize: none;
+  transition: background 0.22s ease;
+  box-sizing: border-box;
+  appearance: none;
+}
+.ct-field input:focus,
+.ct-field textarea:focus {
+  background: rgba(32,77,57,0.06);
+}
+
+/* Floating label */
+.ct-field label {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  pointer-events: none;
+  transform-origin: top left;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    font-size 0.22s ease,
+    color 0.22s ease;
+}
+
+/* Float up when filled or focused */
+.ct-field input:not(:placeholder-shown) ~ label,
+.ct-field textarea:not(:placeholder-shown) ~ label,
+.ct-field input:focus ~ label,
+.ct-field textarea:focus ~ label {
+  transform: translateY(-0.6rem) scale(0.78);
+  color: var(--gold);
+}
+html[dir="rtl"] .ct-field label { transform-origin: top right; }
+
+/* Animated bottom border */
+.ct-field-border {
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: 0;
+  height: 1.5px;
+  border-radius: 2px;
+  background: rgba(32,77,57,0.1);
+  overflow: hidden;
+}
+.ct-field-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ct-field input:focus ~ .ct-field-border::after,
+.ct-field textarea:focus ~ .ct-field-border::after {
+  transform: scaleX(1);
+}
+html[dir="rtl"] .ct-field-border::after { transform-origin: right; }
+
+/* ── Submit button ─────────────────────────────────── */
+.ct-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  margin-top: 0.5rem;
+  border: 0;
+  border-radius: 14px;
+  background: var(--green);
+  color: #fff8ee;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+  box-shadow: 0 6px 20px rgba(32,77,57,0.25);
+}
+.ct-submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-102%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+.ct-submit:hover::before { transform: translateX(0); }
+.ct-submit:hover {
+  box-shadow: 0 10px 28px rgba(32,77,57,0.3);
+  transform: translateY(-1px);
+}
+.ct-submit:active { transform: translateY(0); }
+.ct-submit-label,
+.ct-submit-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+.ct-submit-icon svg { width: 1rem; height: 1rem; }
+
+/* ── Success overlay ───────────────────────────────── */
+.ct-success {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  border-radius: 28px;
+}
+.ct-success--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.ct-success-inner {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+/* Animated checkmark circle */
+.ct-success-check {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green) 0%, var(--gold) 100%);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(32,77,57,0.25);
+  animation: ctCheckPop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes ctCheckPop {
+  from { transform: scale(0) rotate(-15deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0); opacity: 1; }
+}
+.ct-success-check svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: #fff;
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: ctCheckDraw 0.45s ease 0.25s both;
+}
+@keyframes ctCheckDraw {
+  to { stroke-dashoffset: 0; }
+}
+.ct-success-msg {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--green-deep);
+  line-height: 1.6;
+  max-width: 32ch;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ct-section { padding: 5rem 0 5.5rem; }
+  .ct-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .ct-info { position: static; }
+  .ct-copy { max-width: none; }
+}
+
+@media (max-width: 600px) {
+  .ct-section { padding: 3.5rem 0 4rem; }
+  .ct-form-inner { padding: 1.5rem; }
+  .ct-form { border-radius: 22px; }
+  .ct-title { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .ct-actions { gap: 0.4rem; }
+  .ct-action-btn { font-size: 0.78rem; padding: 0.48rem 0.85rem 0.48rem 0.65rem; }
+}
+
+@media (max-width: 400px) {
+  .ct-section { padding: 3rem 0 3.5rem; }
+  .ct-form-inner { padding: 1.25rem; gap: 0.85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-blob,
+  .ct-success-check,
+  .ct-success-check svg,
+  .ct-submit::before {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

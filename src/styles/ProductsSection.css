@@ -1,0 +1,404 @@
+/* ══════════════════════════════════════════════════════
+   ProductsSection — enhanced styles
+   Fonts: Cormorant Garamond + DM Sans (loaded globally)
+   ══════════════════════════════════════════════════════ */
+
+/* ── Reveal ────────────────────────────────────────── */
+.ps-reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ps-reveal--up    { transform: translateY(32px); }
+.ps-reveal--left  { transform: translateX(-24px); }
+.ps-reveal--fade  { transform: scale(0.96); }
+.ps-reveal--in    { opacity: 1; transform: none; }
+
+/* ── Section ───────────────────────────────────────── */
+.ps-section {
+  position: relative;
+  padding: 6rem 0 7rem;
+  font-family: "DM Sans", sans-serif;
+  overflow: hidden;
+}
+
+/* ── Ambient background ────────────────────────────── */
+.ps-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.ps-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.ps-blob--1 {
+  width: 500px; height: 500px;
+  top: -80px; left: -100px;
+  background: radial-gradient(circle, rgba(239,215,138,0.22) 0%, transparent 70%);
+  animation: psBlobFloat 16s ease-in-out infinite alternate;
+}
+.ps-blob--2 {
+  width: 340px; height: 340px;
+  bottom: -40px; right: -60px;
+  background: radial-gradient(circle, rgba(32,77,57,0.12) 0%, transparent 70%);
+  animation: psBlobFloat 12s ease-in-out infinite alternate-reverse;
+}
+@keyframes psBlobFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(18px, 14px) scale(1.07); }
+}
+.ps-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* ── Layout ────────────────────────────────────────── */
+.ps-inner { position: relative; z-index: 1; }
+
+.ps-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem 3rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+
+/* Eyebrow — vertical, rotated */
+.ps-eyebrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.25rem;
+}
+.ps-eyebrow-line {
+  display: block;
+  width: 2px;
+  height: 48px;
+  background: linear-gradient(180deg, transparent, var(--gold));
+  border-radius: 2px;
+}
+.ps-eyebrow-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transform: rotate(180deg);
+}
+html[dir="rtl"] .ps-eyebrow-text { transform: rotate(0deg); }
+
+.ps-header-body {
+  display: grid;
+  gap: 0.6rem;
+  align-content: end;
+}
+.ps-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+.ps-intro {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.85;
+  max-width: 56ch;
+}
+
+/* ── Cards grid ────────────────────────────────────── */
+.ps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.ps-card-reveal { display: contents; }
+
+/* ── Card ──────────────────────────────────────────── */
+.ps-card {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+  will-change: transform;
+  transform-style: preserve-3d;
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.5) inset,
+    0 24px 64px rgba(24,45,34,0.18),
+    0 4px 12px rgba(24,45,34,0.1);
+  transition:
+    box-shadow 0.4s ease;
+}
+.ps-card:hover {
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.5) inset,
+    0 40px 90px rgba(24,45,34,0.26),
+    0 8px 20px rgba(24,45,34,0.14);
+}
+
+/* Image */
+.ps-card-img-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.ps-card-img {
+  position: absolute;
+  inset: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Film grain on card */
+.ps-card-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.07'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+/* Base gradient overlay */
+.ps-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 14, 10, 0.08) 0%,
+    rgba(5, 14, 10, 0.18) 40%,
+    rgba(5, 14, 10, 0.78) 100%
+  );
+  transition: background 0.4s ease;
+}
+.ps-card:hover .ps-card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 14, 10, 0.12) 0%,
+    rgba(5, 14, 10, 0.28) 30%,
+    rgba(5, 14, 10, 0.9) 100%
+  );
+}
+
+/* Badge */
+.ps-card-badge {
+  position: absolute;
+  top: 18px;
+  inset-inline-end: 18px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.38rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(10,26,18,0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(200,155,60,0.28);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.ps-badge-gem {
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(200,155,60,0.7);
+  flex-shrink: 0;
+}
+
+/* Index watermark */
+.ps-card-index {
+  position: absolute;
+  top: 18px;
+  inset-inline-start: 22px;
+  z-index: 3;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(255, 248, 238, 0.1);
+  user-select: none;
+  pointer-events: none;
+  transition: color 0.35s ease;
+}
+.ps-card:hover .ps-card-index { color: rgba(255, 248, 238, 0.18); }
+
+/* ── Content panel ─────────────────────────────────── */
+.ps-card-panel {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 2rem 1.7rem 1.7rem;
+  display: grid;
+  gap: 0.55rem;
+  transform: translateY(0);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Tag line above name */
+.ps-card-tag {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s ease 0.05s,
+    transform 0.35s ease 0.05s;
+}
+.ps-card:hover .ps-card-tag {
+  opacity: 1;
+  transform: none;
+}
+
+/* Product name */
+.ps-card-name {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: #fff8ee;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+/* Description — hidden until hover */
+.ps-card-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: rgba(255,248,238,0.7);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s ease;
+}
+.ps-card:hover .ps-card-desc {
+  max-height: 8rem;
+  opacity: 1;
+}
+
+/* CTA button */
+.ps-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.62rem 1.3rem 0.62rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #0a1a12;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 0.25rem;
+  transform: translateY(12px);
+  opacity: 0;
+  transition:
+    opacity 0.35s ease 0.1s,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.ps-card:hover .ps-card-cta {
+  opacity: 1;
+  transform: none;
+}
+.ps-card-cta:hover {
+  background: #fff8ee;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+}
+.ps-cta-arrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.22s ease;
+}
+.ps-card-cta:hover .ps-cta-arrow { transform: translateX(3px); }
+.ps-cta-arrow svg { width: 1rem; height: 1rem; }
+html[dir="rtl"] .ps-cta-arrow svg { transform: scaleX(-1); }
+html[dir="rtl"] .ps-card-cta:hover .ps-cta-arrow { transform: translateX(-3px); }
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ps-section { padding: 5rem 0 5.5rem; }
+  .ps-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .ps-eyebrow { flex-direction: row; }
+  .ps-eyebrow-line {
+    width: 32px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .ps-eyebrow-text {
+    writing-mode: horizontal-tb;
+    transform: none;
+    letter-spacing: 0.12em;
+  }
+  .ps-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .ps-card { aspect-ratio: 4 / 3; }
+  /* Show description + CTA always on touch */
+  .ps-card-desc { max-height: 6rem; opacity: 1; }
+  .ps-card-tag, .ps-card-cta { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  .ps-section { padding: 3.5rem 0 4rem; }
+  .ps-card { aspect-ratio: 3 / 4; border-radius: 22px; }
+  .ps-card-name { font-size: clamp(1.5rem, 7vw, 1.9rem); }
+  .ps-card-panel { padding: 1.5rem 1.3rem 1.4rem; }
+  .ps-card-badge { top: 14px; inset-inline-end: 14px; font-size: 0.68rem; }
+}
+
+@media (max-width: 400px) {
+  .ps-card { border-radius: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-reveal, .ps-card, .ps-card-img,
+  .ps-card-desc, .ps-card-cta, .ps-card-tag,
+  .ps-blob {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+    opacity: 1 !important;
+    max-height: none !important;
+  }
+}

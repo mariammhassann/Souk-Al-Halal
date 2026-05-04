@@ -52,14 +52,14 @@ export const siteContent = {
       eyebrow: "المؤسس والرؤية",
       title: "المؤسس والأهداف",
       intro:
-        "هذه الصفحة تقدم نبذة أوضح عن القيادة التي تقف خلف سوق الحلال، والرؤية التي توجه العمل نحو جودة أعلى وشراكات تصدير أكثر قوة.",
+        "هذه الصفحة تقدم نبذة أوضح عن القيادة التي تقف خلف سوق الحلال ودور إدارة SAS Station في فرز وتجهيز محاصيل الثوم والبصل عالية الجودة للتصدير إلى الأسواق العالمية.",
       founder: {
         name: "م. محمود عمر مؤمن",
         role: "Founder & Managing Director",
         company:
           "SAS Station for Sorting & Packaging | Onion & Garlic Export Specialists",
         note:
-          "قيادة عملية تجمع بين الخبرة الميدانية وفهم متطلبات الأسواق، مع تركيز واضح على الجودة والالتزام وبناء الثقة."
+          "بصفتي المؤسس والمدير الإداري لـ SAS Station، أقود منشأة متخصصة في فرز وتعبئة المحاصيل الزراعية عالية الجودة، مع تركيز عملي على سلامة التجهيز، دقة الفرز اليدوي، وسرعة تلبية متطلبات أسواق التصدير."
       },
       portrait: {
         badge: "Founder Profile",
@@ -69,12 +69,13 @@ export const siteContent = {
       },
       quote:
         "نؤمن أن أفضل الشراكات تبدأ من منتج صادق، تجهيز دقيق، وتعامل يحترم احتياج العميل من أول تواصل حتى آخر شحنة.",
-      objectivesTitle: "الأهداف",
+      objectivesTitle: "المسؤوليات والإنجازات الرئيسية",
       objectives: [
-        "تقديم ثوم وبصل مصري بجودة ثابتة ومعايير مناسبة للتصدير.",
-        "بناء علاقات طويلة المدى مع المستوردين تقوم على الثقة والوضوح.",
-        "تطوير عمليات الفرز والتعبئة بما يرفع كفاءة المنتج وجاهزيته للشحن.",
-        "تمثيل المنتج المصري بصورة احترافية في الأسواق الإقليمية والعالمية."
+        "إدارة منشأة White-Listed معترف بها رسميًا من الهيئة القومية لسلامة الغذاء (NFSA) منذ عام 2018.",
+        "الإشراف على دورة التجهيز الكاملة للأسواق المتميزة، بما في ذلك أستراليا وإيطاليا والبرازيل وتايوان وروسيا.",
+        "ضمان الالتزام الصارم بمعايير الجودة الدولية ودقة الفرز اليدوي.",
+        "تحسين عمليات سلاسل الإمداد لتحقيق مدة تجهيز من 3 إلى 4 أيام لحاويات 40 قدم.",
+        "بناء شراكات استراتيجية مع كبرى شركات التصدير في مصر بوصفنا شريك نجاح موثوقًا."
       ],
       valuesTitle: "كلمات تعبر عنا",
       values: [
@@ -236,18 +237,18 @@ export const siteContent = {
       }
     },
     founderPage: {
-      backLabel: "Back to Website",
+      backLabel: "Back to Home",
       eyebrow: "Founder and Vision",
       title: "Founder Details and Objectives",
       intro:
-        "This page shares a clearer look at the leadership behind Souq Al-Halal and the vision shaping its export quality, discipline, and long-term partnerships.",
+        "This page shares a clearer look at the leadership behind Souq Al-Halal and the role of SAS Station in sorting and packaging premium onion and garlic crops for international export markets.",
       founder: {
         name: "Eng. Mahmoud Omar Moumen",
         role: "Founder & Managing Director",
         company:
           "SAS Station for Sorting & Packaging | Onion & Garlic Export Specialists",
         note:
-          "A practical leader combining field experience with a clear understanding of export-market expectations, quality control, and trusted execution."
+          "As the Founder and Managing Director of SAS Station, I lead a specialized facility dedicated to the sorting and packaging of high-quality agricultural crops with a strong focus on export precision, quality control, and trusted execution."
       },
       portrait: {
         badge: "Founder Profile",
@@ -257,12 +258,13 @@ export const siteContent = {
       },
       quote:
         "We believe the strongest business relationships begin with an honest product, careful preparation, and respectful service from first contact to final shipment.",
-      objectivesTitle: "Objectives",
+      objectivesTitle: "Key Responsibilities & Achievements",
       objectives: [
-        "Deliver Egyptian garlic and onions with stable quality and export-ready standards.",
-        "Build long-term importer relationships grounded in trust and clarity.",
-        "Continuously improve sorting and packing operations to raise product readiness and efficiency.",
-        "Represent Egyptian produce professionally across regional and global markets."
+        "Managing a White-Listed facility officially recognized by the National Food Safety Authority (NFSA) since 2018.",
+        "Overseeing the entire processing cycle for premium markets, including Australia, Italy, Brazil, Taiwan, and Russia.",
+        "Ensuring strict adherence to international quality standards and manual sorting precision.",
+        "Optimizing supply chain operations to achieve a 3-4 day turnaround for 40ft containers.",
+        "Cultivating strategic partnerships with Egypt's leading exporters as a trusted \"Success Partner.\""
       ],
       valuesTitle: "Words That Represent Us",
       values: [
@@ -293,7 +295,7 @@ export const siteContent = {
       ]
     },
     productDetailsPage: {
-      backLabel: "Back to Website",
+      backLabel: "Back to Home",
       eyebrow: "Product Details",
       title: "Our Products and Preparation Standards",
       intro:

@@ -15,25 +15,39 @@ const LANG_STORAGE_KEY = "souq-lang";
 const FOUNDER_PATH = "/founder";
 const PRODUCT_DETAILS_PATH = "/product-details";
 const BASE_PATH = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+const KNOWN_PATHS = new Set(["/", FOUNDER_PATH, PRODUCT_DETAILS_PATH]);
 
-function getAppPathname(pathname) {
-  if (!BASE_PATH) {
-    return pathname || "/";
-  }
-
-  if (pathname === BASE_PATH) {
+function normalizePath(pathname) {
+  if (!pathname || pathname === "/") {
     return "/";
   }
 
-  if (pathname.startsWith(`${BASE_PATH}/`)) {
-    return pathname.slice(BASE_PATH.length) || "/";
+  const normalized = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  return normalized || "/";
+}
+
+function getAppPathname(pathname) {
+  const normalizedPathname = normalizePath(pathname);
+
+  if (!BASE_PATH) {
+    return KNOWN_PATHS.has(normalizedPathname) ? normalizedPathname : "/";
   }
 
-  return pathname || "/";
+  if (normalizedPathname === BASE_PATH) {
+    return "/";
+  }
+
+  if (normalizedPathname.startsWith(`${BASE_PATH}/`)) {
+    const appPath = normalizePath(normalizedPathname.slice(BASE_PATH.length) || "/");
+    return KNOWN_PATHS.has(appPath) ? appPath : "/";
+  }
+
+  return KNOWN_PATHS.has(normalizedPathname) ? normalizedPathname : "/";
 }
 
 function buildBrowserPath(path) {
-  return `${BASE_PATH}${path === "/" ? "" : path}` || "/";
+  const normalizedPath = normalizePath(path);
+  return `${BASE_PATH}${normalizedPath === "/" ? "" : normalizedPath}` || "/";
 }
 
 function App() {
@@ -144,13 +158,12 @@ function App() {
           <ContactSection
             content={content.contact}
             isSubmitted={isSubmitted}
-            language={language}
             onSubmit={handleSubmit}
           />
         </main>
       )}
 
-      <Footer content={content.footer} />
+      <Footer content={content.footer} language={language} />
       <FloatingActions language={language} />
     </>
   );

@@ -23,7 +23,7 @@ export const contactActions = {
     {
       key: "facebook",
       label: "فيسبوك",
-      href: "https://www.facebook.com/souqalhalal"
+      href: "https://www.facebook.com/share/17TtXi35rr/?mibextid=wwXIfr"
     }
   ],
   en: [
@@ -50,7 +50,7 @@ export const contactActions = {
     {
       key: "facebook",
       label: "Facebook",
-      href: "https://www.facebook.com/souqalhalal"
+      href: "https://www.facebook.com/share/17TtXi35rr/?mibextid=wwXIfr"
     }
   ]
 };
