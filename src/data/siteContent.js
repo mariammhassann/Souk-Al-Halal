@@ -62,7 +62,6 @@ export const siteContent = {
           "بصفتي المؤسس والمدير الإداري لـ SAS Station، أقود منشأة متخصصة في فرز وتعبئة المحاصيل الزراعية عالية الجودة، مع تركيز عملي على سلامة التجهيز، دقة الفرز اليدوي، وسرعة تلبية متطلبات أسواق التصدير."
       },
       portrait: {
-        badge: "Founder Profile",
         alt: "صورة تعريفية للمؤسس",
         placeholderTop: "Eng.",
         placeholderBottom: "Mahmoud Omar Moumen"
@@ -211,7 +210,6 @@ export const siteContent = {
       ]
     },
     hero: {
-      eyebrow: "Premium produce from Egypt",
       title: "From the Nile Valley to Global Markets",
       subtitle:
         "We supply export-ready Egyptian garlic and onions with careful selection, consistent grading, and dependable service.",
@@ -251,7 +249,6 @@ export const siteContent = {
           "As the Founder and Managing Director of SAS Station, I lead a specialized facility dedicated to the sorting and packaging of high-quality agricultural crops with a strong focus on export precision, quality control, and trusted execution."
       },
       portrait: {
-        badge: "Founder Profile",
         alt: "Founder profile portrait placeholder",
         placeholderTop: "Eng.",
         placeholderBottom: "Mahmoud Omar Moumen"

@@ -329,13 +329,6 @@ html[dir="ltr"] body {
   top: 2rem;
 }
 
-.hero-main-eyebrow {
-  background: rgba(239, 215, 166, 0.18);
-  color: #fff3d3;
-  box-shadow: inset 0 0 0 1px rgba(255, 243, 211, 0.18);
-  backdrop-filter: blur(10px);
-}
-
 .hero-slide-copy p {
   margin: 0;
   max-width: 32rem;
@@ -1460,10 +1453,6 @@ html[dir="ltr"] .quality-list li::before {
   .visual-thumb {
     width: 72px;
     height: 72px;
-  }
-
-  .hero-main-eyebrow {
-    margin-inline: auto;
   }
 
   .hero-actions-overlay {

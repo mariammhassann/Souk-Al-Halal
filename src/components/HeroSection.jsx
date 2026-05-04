@@ -35,7 +35,6 @@ export default function HeroSection({ content }) {
     },
     {
       image: imageAssets.hero.slides[1],
-      eyebrow: content.eyebrow,
       title: content.title,
       text: content.subtitle,
     },
@@ -105,7 +104,6 @@ export default function HeroSection({ content }) {
           {/* ── main copy (always on the image) ── */}
           <div className="hero-slide-inner">
             <div className="hero-slide-copy hero-slide-copy-main">
-              <p className="eyebrow hero-main-eyebrow">{content.eyebrow}</p>
               <h1>{content.title}</h1>
               <p className="hero-main-subtitle">{content.subtitle}</p>
 

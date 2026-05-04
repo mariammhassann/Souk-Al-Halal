@@ -167,11 +167,6 @@ export default function FounderPage({ content, onBackHome }) {
                   <div className="fp-portrait-overlay" aria-hidden="true" />
                   <div className="fp-portrait-grain" aria-hidden="true" />
 
-                  {/* Floating badge */}
-                  <div className="fp-portrait-badge" role="img" aria-label="Founder Profile">
-                    <span className="fp-badge-star" aria-hidden="true">✦</span>
-                    <span>{content.portrait.badge}</span>
-                  </div>
                 </div>
 
                 {/* Identity block */}

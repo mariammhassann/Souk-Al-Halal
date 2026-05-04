@@ -318,36 +318,6 @@ html[dir="rtl"] .fp-back svg { transform: scaleX(-1); }
   mix-blend-mode: overlay;
 }
 
-/* Floating badge */
-.fp-portrait-badge {
-  position: absolute;
-  top: 16px;
-  inset-inline-end: 16px;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  background: rgba(200,155,60,0.18);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(200,155,60,0.3);
-  color: var(--gold);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.fp-badge-star {
-  font-size: 0.7rem;
-  animation: badgeSpin 5s linear infinite;
-  display: block;
-  line-height: 1;
-}
-@keyframes badgeSpin {
-  to { transform: rotate(360deg); }
-}
-
 /* Identity block */
 .fp-card-identity {
   padding: 1.4rem 1.6rem 0.6rem;
@@ -720,12 +690,6 @@ html[dir="rtl"] .fp-obj-item--in { transform: none; }
   .fp-portrait-wrap {
     aspect-ratio: 1 / 1;
   }
-  .fp-portrait-badge {
-    top: 12px;
-    inset-inline-end: 12px;
-    padding: 0.34rem 0.7rem;
-    font-size: 0.66rem;
-  }
   .fp-card-identity { padding: 1.2rem 1.3rem 0.5rem; }
   .fp-card-note { padding: 0.6rem 1.3rem 0.5rem; }
   .fp-card-note p,
@@ -800,7 +764,6 @@ html[dir="rtl"] .fp-obj-item--in { transform: none; }
   .fp-obj-item,
   .fp-val-item,
   .fp-blob,
-  .fp-badge-star,
   .fp-portrait-img {
     animation: none !important;
     transition: opacity 0.3s ease !important;
